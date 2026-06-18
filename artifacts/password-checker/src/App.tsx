@@ -10,7 +10,6 @@ import Home from "@/pages/home";
 import Checker from "@/pages/checker";
 import Generator from "@/pages/generator";
 import Learn from "@/pages/learn";
-import Quiz from "@/pages/quiz";
 import About from "@/pages/about";
 
 const queryClient = new QueryClient();
@@ -23,7 +22,6 @@ function Router() {
         <Route path="/checker" component={Checker} />
         <Route path="/generator" component={Generator} />
         <Route path="/learn" component={Learn} />
-        <Route path="/quiz" component={Quiz} />
         <Route path="/about" component={About} />
         <Route component={NotFound} />
       </Switch>

@@ -135,3 +135,34 @@
     @apply font-sans antialiased bg-background text-foreground transition-colors duration-300;
   }
 }
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@keyframes pulse-bar {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes glitch-text {
+  0%, 90%, 100% { clip-path: none; transform: none; }
+  92% { clip-path: inset(20% 0 60% 0); transform: translateX(-4px); }
+  94% { clip-path: inset(70% 0 10% 0); transform: translateX(4px); }
+  96% { clip-path: inset(40% 0 40% 0); transform: translateX(-2px); }
+  98% { clip-path: none; transform: translateX(2px); }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(0,220,180,0.4), 0 0 12px rgba(0,220,180,0.2); }
+  50% { text-shadow: 0 0 8px rgba(0,240,200,0.8), 0 0 24px rgba(0,240,200,0.4), 0 0 40px rgba(0,200,255,0.2); }
+}
+
+.neon-text {
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+.glitch-text {
+  animation: glitch-text 6s steps(1) infinite;
+}

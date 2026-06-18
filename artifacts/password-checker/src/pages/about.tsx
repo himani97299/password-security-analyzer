@@ -1,6 +1,5 @@
-import { Shield, Lock, Server, Github } from "lucide-react";
+import { Shield, Lock, Server } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 export default function About() {
   return (
@@ -65,10 +64,6 @@ export default function About() {
             <div className="text-sm text-muted-foreground">
               Version 1.0.0 • Built with React & TypeScript
             </div>
-            <Button variant="outline" className="gap-2">
-              <Github className="h-4 w-4" />
-              View Source
-            </Button>
           </div>
         </div>
       </div>
