@@ -1,36 +1,50 @@
-# [Project name]
+# Fortify — Password Strength Checker
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A professional, portfolio-worthy cybersecurity tool that analyzes passwords, teaches security concepts, and helps users create stronger credentials.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 8080)
+- `pnpm --filter @workspace/password-checker run dev` — run the frontend (port 19334)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
+- Frontend: React + Vite, wouter, Tailwind CSS, shadcn/ui, framer-motion, next-themes
 - API: Express 5
-- DB: PostgreSQL + Drizzle ORM
 - Validation: Zod (`zod/v4`), `drizzle-zod`
 - API codegen: Orval (from OpenAPI spec)
 - Build: esbuild (CJS bundle)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `lib/api-spec/openapi.yaml` — API contract (source of truth)
+- `lib/api-client-react/src/generated/` — generated React Query hooks
+- `lib/api-zod/src/generated/` — generated Zod validation schemas
+- `artifacts/api-server/src/lib/passwordAnalyzer.ts` — core password analysis engine
+- `artifacts/api-server/src/lib/passwordGenerator.ts` — secure password generator
+- `artifacts/api-server/src/routes/passwords.ts` — password API routes
+- `artifacts/password-checker/src/` — React frontend
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Password analysis is entirely server-side; passwords are never stored or logged.
+- Entropy estimation uses charset-size × log₂ formula; crack time assumes 10B guesses/sec (GPU estimate).
+- API uses mutation hooks (POST) for both analyze and generate — stateless, no DB needed.
+- Dark-first theme using next-themes; light mode fully supported.
+- No database provisioned — this app is stateless by design (passwords must not be persisted).
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- `/` — Landing page with live inline password tester
+- `/checker` — Full analyzer: score 0-100, entropy, crack time, breakdown, suggestions
+- `/generator` — Configurable secure password generator with inline analysis
+- `/learn` — Educational hub: entropy, MFA, passphrases, social engineering, phishing, etc.
+- `/quiz` — Interactive multiple-choice password security quiz
+- `/about` — How it works + privacy policy
 
 ## User preferences
 
@@ -38,8 +52,6 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- No DATABASE_URL needed — this app is intentionally stateless.
+- After any OpenAPI spec change, always re-run codegen before touching routes or frontend.
+- The password analysis route uses POST (not GET) so passwords never appear in server access logs.

@@ -1,0 +1,161 @@
+You are a senior Python developer, cybersecurity educator, UI/UX designer, and software architect.
+
+Help me build a professional, modern, and educational **Password Strength Checker** as a complete Python web application. Do **not** skip planning. Guide me like a mentor while allowing me to learn. Explain important concepts when needed instead of only giving code.
+
+### Goal
+
+Create a responsive website that analyzes a password, explains its strength, teaches cybersecurity concepts, and provides actionable recommendations. The application should look polished enough to include in a portfolio.
+
+## Technical Requirements
+
+* Backend: Python (Flask)
+* Frontend: HTML5, CSS3, JavaScript
+* Organized project structure
+* Clean, modular, and well-commented code
+* Responsive design for desktop and mobile
+* Follow Python best practices
+* Include a requirements.txt file
+* Include a README.md explaining installation and usage
+
+## Features
+
+### 1. Home Page
+
+* Modern landing page
+* Attractive hero section
+* Brief explanation of password security
+* Navigation bar
+* Smooth animations
+* Call-to-action button
+
+### 2. Password Strength Checker
+
+Analyze the entered password and display:
+
+* Strength level (Very Weak, Weak, Fair, Good, Strong, Very Strong)
+* Numerical score (0–100)
+* Animated strength meter
+* Color-coded results
+* Detailed explanation of the score
+
+Check for:
+
+* Password length
+* Uppercase letters
+* Lowercase letters
+* Numbers
+* Special characters
+* Repeated characters
+* Sequential characters
+* Common patterns
+* Dictionary words (basic)
+* Overall entropy estimation
+
+### 3. Password Analysis
+
+Display:
+
+* Character count
+* Number of uppercase letters
+* Number of lowercase letters
+* Number of digits
+* Number of symbols
+* Estimated entropy
+* Estimated crack time
+* Security score breakdown
+
+### 4. Improvement Suggestions
+
+Provide personalized recommendations such as:
+
+* Increase password length
+* Add symbols
+* Add numbers
+* Avoid predictable patterns
+* Avoid personal information
+* Avoid reused passwords
+* Create memorable passphrases
+
+### 5. Password Generator
+
+Allow users to choose:
+
+* Password length
+* Uppercase
+* Lowercase
+* Numbers
+* Symbols
+* Exclude similar characters
+
+Generate a secure random password with a copy button.
+
+### 6. Learn Section
+
+Include educational content covering:
+
+* Why password security matters
+* Strong vs weak passwords
+* Password entropy
+* Password managers
+* Multi-factor authentication (MFA)
+* Passphrases
+* Social engineering
+* Phishing
+* Credential stuffing
+* Password reuse risks
+
+### 7. Common Weak Passwords
+
+Show examples of insecure passwords and explain why they are unsafe.
+
+### 8. Security Tips
+
+Provide practical cybersecurity advice with icons and clean cards.
+
+### 9. Interactive Quiz
+
+Create a small quiz about password security.
+
+* Multiple-choice questions
+* Score at the end
+* Correct explanations
+
+### 10. About Page
+
+Explain:
+
+* How the password checker works
+* Privacy policy
+* That passwords are analyzed locally whenever possible and are not stored
+
+## UI/UX Requirements
+
+* Professional cybersecurity theme
+* Modern color palette
+* Smooth animations
+* Glassmorphism or subtle modern effects
+* Dark mode with a toggle
+* Rounded cards
+* Icons throughout the interface
+* Progress bars
+* Responsive navigation
+* Clean typography
+* Accessible design
+
+## Project Structure
+
+Generate a proper folder structure with separate files for:
+
+* Python backend
+* Templates
+* Static CSS
+* JavaScript
+* Images/icons
+* README
+* Requirements
+
+## Development Style
+
+Build the project step by step. Before writing each section of code, explain what it does and why it is needed. Ensure every feature works correctly before moving to the next one. Keep the code clean, modular, and suitable for a GitHub portfolio.
+
+The final project should look like a real cybersecurity application created by a computer science student for internships and should demonstrate both programming skills and cybersecurity knowledge.

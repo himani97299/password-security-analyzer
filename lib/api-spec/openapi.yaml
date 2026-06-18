@@ -1,15 +1,16 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Password Strength Checker API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: passwords
+    description: Password analysis and generation
 paths:
   /healthz:
     get:
@@ -24,6 +25,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /passwords/analyze:
+    post:
+      operationId: analyzePassword
+      tags: [passwords]
+      summary: Analyze password strength
+      description: Analyze a password and return detailed strength metrics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PasswordInput"
+      responses:
+        "200":
+          description: Password analysis result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PasswordAnalysis"
+        "400":
+          description: Bad request
+
+  /passwords/generate:
+    post:
+      operationId: generatePassword
+      tags: [passwords]
+      summary: Generate a secure password
+      description: Generate a random secure password based on specified options
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GeneratorOptions"
+      responses:
+        "200":
+          description: Generated password
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeneratedPassword"
+        "400":
+          description: Bad request
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +80,127 @@ components:
       required:
         - status
 
+    PasswordInput:
+      type: object
+      required:
+        - password
+      properties:
+        password:
+          type: string
+          description: The password to analyze
+
+    PasswordAnalysis:
+      type: object
+      required:
+        - score
+        - strengthLabel
+        - strengthLevel
+        - entropy
+        - charCount
+        - uppercaseCount
+        - lowercaseCount
+        - digitCount
+        - symbolCount
+        - crackTime
+        - suggestions
+        - breakdown
+        - hasCommonPattern
+        - hasRepeatedChars
+        - hasSequentialChars
+        - isDictionaryWord
+      properties:
+        score:
+          type: integer
+          description: Numerical score 0-100
+        strengthLabel:
+          type: string
+          description: Human-readable strength label
+          enum: [Very Weak, Weak, Fair, Good, Strong, Very Strong]
+        strengthLevel:
+          type: integer
+          description: Strength level 0-5
+        entropy:
+          type: number
+          description: Estimated entropy in bits
+        charCount:
+          type: integer
+        uppercaseCount:
+          type: integer
+        lowercaseCount:
+          type: integer
+        digitCount:
+          type: integer
+        symbolCount:
+          type: integer
+        crackTime:
+          type: string
+          description: Human-readable estimated crack time
+        suggestions:
+          type: array
+          items:
+            type: string
+          description: Improvement suggestions
+        breakdown:
+          $ref: "#/components/schemas/ScoreBreakdown"
+        hasCommonPattern:
+          type: boolean
+        hasRepeatedChars:
+          type: boolean
+        hasSequentialChars:
+          type: boolean
+        isDictionaryWord:
+          type: boolean
+
+    ScoreBreakdown:
+      type: object
+      required:
+        - lengthScore
+        - varietyScore
+        - patternScore
+        - entropyScore
+      properties:
+        lengthScore:
+          type: integer
+        varietyScore:
+          type: integer
+        patternScore:
+          type: integer
+        entropyScore:
+          type: integer
+
+    GeneratorOptions:
+      type: object
+      required:
+        - length
+        - useUppercase
+        - useLowercase
+        - useDigits
+        - useSymbols
+        - excludeSimilar
+      properties:
+        length:
+          type: integer
+          minimum: 4
+          maximum: 128
+        useUppercase:
+          type: boolean
+        useLowercase:
+          type: boolean
+        useDigits:
+          type: boolean
+        useSymbols:
+          type: boolean
+        excludeSimilar:
+          type: boolean
+          description: Exclude visually similar characters like 0/O, 1/l/I
+
+    GeneratedPassword:
+      type: object
+      required:
+        - password
+        - analysis
+      properties:
+        password:
+          type: string
+        analysis:
+          $ref: "#/components/schemas/PasswordAnalysis"
