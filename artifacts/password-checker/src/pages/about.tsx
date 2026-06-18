@@ -6,7 +6,7 @@ export default function About() {
     <div className="flex-1 py-10">
       <div className="container px-4 mx-auto max-w-3xl">
         <div className="mb-10 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">About Fortify</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">About CipherX</h1>
           <p className="text-lg text-muted-foreground">
             A professional security tool built to educate and protect.
           </p>
@@ -22,7 +22,7 @@ export default function About() {
               <CardContent className="p-6">
                 <p className="mb-4 leading-relaxed text-muted-foreground">
                   When dealing with passwords, privacy isn't just a feature—it's the entire product. 
-                  Fortify is built with a strict zero-knowledge architecture regarding your credentials.
+                  CipherX is built with a strict zero-knowledge architecture regarding your credentials.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
@@ -48,7 +48,7 @@ export default function About() {
             <h2 className="text-2xl font-bold mb-4">How the Analyzer Works</h2>
             <div className="prose dark:prose-invert max-w-none text-muted-foreground">
               <p>
-                The Fortify analyzer doesn't just count characters. It uses advanced algorithms to determine 
+                The CipherX analyzer doesn't just count characters. It uses advanced algorithms to determine 
                 the true entropy and resilience of a password:
               </p>
               <ul>

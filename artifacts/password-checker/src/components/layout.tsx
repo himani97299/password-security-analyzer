@@ -26,7 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <Shield className="h-6 w-6 text-primary group-hover:text-primary/80 transition-colors drop-shadow-[0_0_8px_rgba(0,240,200,0.8)]" />
-            <span className="font-bold text-lg tracking-tight text-foreground drop-shadow-[0_0_6px_rgba(0,220,180,0.5)]">Fortify</span>
+            <span className="font-bold text-lg tracking-tight text-foreground drop-shadow-[0_0_6px_rgba(0,220,180,0.5)]">CipherX</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -115,7 +115,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <footer className="relative z-10 border-t border-primary/20 py-6 bg-background/60 backdrop-blur-sm">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
           <p className="drop-shadow-[0_0_4px_rgba(0,200,160,0.3)]">
-            Fortify Password Analyzer — Built for security awareness.
+            CipherX Password Analyzer — Built for security awareness.
           </p>
         </div>
       </footer>
