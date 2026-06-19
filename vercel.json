@@ -1,0 +1,12 @@
+{
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm run typecheck:libs && pnpm --filter @workspace/password-checker run build",
+  "outputDirectory": "artifacts/password-checker/dist/public",
+  "env": {
+    "PORT": "3000",
+    "BASE_PATH": "/"
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
